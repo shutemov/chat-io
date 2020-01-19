@@ -12,7 +12,7 @@
 
 <script>
 
-  import AppNav from '@/components/main/Navigation'
+  import AppNav from './../components/main/mainPage/Navigation'
 
   export default {
     components: {

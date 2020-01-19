@@ -1,8 +1,8 @@
 <template>
     <nav>
-      <h1>
+      <a href="http://localhost:3000/" target="_blank">
         CHAT.IO
-      </h1>
+      </a>
       <el-menu  class="el-menu-demo" mode="horizontal" @select="">
         <el-menu-item index="1">Create room</el-menu-item>
         <el-menu-item index="2">My rooms</el-menu-item>

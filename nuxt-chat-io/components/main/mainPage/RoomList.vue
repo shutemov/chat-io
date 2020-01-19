@@ -10,15 +10,15 @@
         </div>
       </div>
     </div>
-    <room-list-item v-for="o in 4" :key="o" class="text item">
-
-    </room-list-item>
+    <ul>
+      <li is="room-list-item" v-for="o in 4" :key="o"></li>
+    </ul>
   </el-card>
 
 </template>
 
 <script>
-  import RoomListItem from '@/components/main/RoomListItem'
+  import RoomListItem from './RoomListItem'
 
   export default {
     name: "RoomList",

@@ -8,7 +8,7 @@
 
 <script>
 
-  import RoomList from '@/components/main/RoomList'
+  import RoomList from './../components/main/mainPage/RoomList'
 
   export default {
     components: {RoomList}
