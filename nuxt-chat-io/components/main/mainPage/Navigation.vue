@@ -1,6 +1,6 @@
 <template>
     <nav>
-      <a href="http://localhost:3000/" target="_blank">
+      <a href="http://localhost:3000/mainPage"  target="_blank">
         CHAT.IO
       </a>
       <el-menu  class="el-menu-demo" mode="horizontal" @select="">
