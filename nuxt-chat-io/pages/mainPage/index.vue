@@ -8,7 +8,7 @@
 
 <script>
 
-  import RoomList from '../../components/main/mainPage/RoomList'
+  import RoomList from '../../components/main/mainPage/RoomList.vue'
 
   export default {
     components: {RoomList}
@@ -45,5 +45,9 @@
 
   .links {
     padding-top: 15px;
+  }
+
+  .el-row{
+    height: 100%;
   }
 </style>

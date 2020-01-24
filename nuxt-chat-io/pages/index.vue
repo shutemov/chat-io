@@ -7,11 +7,11 @@
 </template>
 
 <script>
-  import AuthApp from './../components/main/login/authApp'
+  import AuthApp from '../components/main/auth/authApp.vue'
 
   export default {
     name: "index",
-    layout: "login",
+    layout: "auth",
     components: {AuthApp}
   }
 </script>

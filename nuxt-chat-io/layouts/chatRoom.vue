@@ -4,7 +4,7 @@
       <app-nav></app-nav>
     </el-header>
     <el-container>
-      <el-aside width="200px">Aside
+      <el-aside width="200px">USERS
         <room-user-list></room-user-list>
       </el-aside>
       <el-main>
