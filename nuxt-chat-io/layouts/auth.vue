@@ -2,8 +2,7 @@
   <el-container>
     <el-header>
       <span>Chat.IO</span>
-<!--      <nuxt-link to="/mainPage" role="button">Registration</nuxt-link>-->
-      <a href="#">Registration</a>
+      <a href="#" @click="goToRegistration">Registration</a>
     </el-header>
     <el-main>
       <nuxt/>
@@ -15,6 +14,11 @@
 
   export default {
     name: "auth",
+    methods:{
+      goToRegistration(){
+        this.$router.push('/registration')
+      }
+    }
   }
 </script>
 
@@ -28,6 +32,14 @@
     border-bottom: 1px solid #e6e6e6;
     font-style: normal;
     -webkit-font-smoothing: subpixel-antialiased;
+  }
+  .el-main{
+    height: 565px;
+    background: url("https://img1.goodfon.com/original/1920x1080/5/8d/android-l-material-design-2370.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
 
   span {

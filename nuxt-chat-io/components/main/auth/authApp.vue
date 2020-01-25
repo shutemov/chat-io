@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import LoginApp from './login'
+  import LoginApp from './Login'
 
   export default {
     name: "authApp",

@@ -4,17 +4,20 @@
       <span>Registration</span>
     </div>
     <div class="card-body">
-      <label>login</label>
+      <label>Login</label>
       <el-input
         class="item"
         placeholder="Please input"
-        v-model="input"
+        v-model="loginInput"
         clearable>
       </el-input>
-      <label>password</label>
-      <el-input class="item" placeholder="Please input password" v-model="input" show-password></el-input>
+      <label>Password</label>
+      <el-input class="item" placeholder="Please input password" v-model="passwordInput" show-password></el-input>
+      <label>Repeat password</label>
+      <el-input class="item" placeholder="Please input password" v-model="repeatPasswordInput" show-password></el-input>
       <div>
-        <el-button>Sign up</el-button>
+        <el-button type="success">Create!</el-button>
+        <el-button type="danger">Back</el-button>
       </div>
     </div>
   </el-card>
@@ -26,12 +29,15 @@
     data: () => {
       return {
         loginInput: null,
-        passwordInput: null
+        passwordInput: null,
+        repeatPasswordInput: null,
       }
     }
   }
 </script>
 
 <style scoped>
-
+  .card-body > * {
+    margin-bottom: 15px;
+  }
 </style>
