@@ -1,22 +1,33 @@
 <template>
-    <div class="message">
-      <div>
-        <div>head message</div>
-        <div>body message</div>
-      </div>
-      <div>Time</div>
+  <div class="message">
+    <div>
+      <div>{{message.author}}</div>
+      <div>{{message.body}}</div>
     </div>
+    <div>{{message.date}}</div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "Message"
+  export default {
+    name: "Message",
+    props: {
+      message: {
+        type: Object,
+        required: true,
+        default: () => {
+          return {
+            author: 'Author from default'
+          }
+        }
+      }
     }
+  }
 </script>
 
 <style scoped>
-  .message{
+  .message {
     margin-bottom: 5px;
-    border: 1px solid green;
+    border: 1px dashed #526488;
   }
 </style>

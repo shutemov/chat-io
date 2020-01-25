@@ -1,6 +1,6 @@
 <template>
 <ul>
-  <li is="user-item" v-for="o in 4" :key="o">
+  <li is="user-item" v-for="o in getRoomUserList" :key="o" :user="o">
 
   </li>
 </ul>
@@ -10,11 +10,17 @@
 <script>
 
   import UserItem from './RoomUserListItem'
-
+  import {mapGetters} from 'vuex'
   export default {
     name: "RoomUsersList",
     components: {
       UserItem
+    },
+    computed:{
+      ...mapGetters(['getRoomUsers']),
+      getRoomUserList(){
+        return [].concat(this.getRoomUsers)
+      }
     }
   }
 </script>
