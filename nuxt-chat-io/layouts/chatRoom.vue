@@ -4,11 +4,10 @@
       <app-nav></app-nav>
     </el-header>
     <el-container>
-      <el-aside width="200px">USERS
+      <el-aside width="200px">
         <room-user-list></room-user-list>
       </el-aside>
       <el-main>
-        main
         <app-chat></app-chat>
       </el-main>
     </el-container>
@@ -24,7 +23,7 @@
   export default {
     name: "chatRoom",
     components: {
-      AppNav, RoomUserList,AppChat
+      AppNav, RoomUserList, AppChat
     }
   }
 </script>
