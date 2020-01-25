@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import AuthApp from '../components/main/auth/authApp.vue'
+  import AuthApp from '../components/main/auth/AuthApp.vue'
 
   export default {
     name: "index",
