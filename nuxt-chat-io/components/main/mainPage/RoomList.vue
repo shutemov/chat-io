@@ -11,7 +11,7 @@
       </div>
     </div>
     <ul>
-      <li is="room-list-item" v-for="o in 4" :key="o"></li>
+      <li is="room-list-item" v-for="o in roomList" :key="o" :room="o"></li>
     </ul>
   </el-card>
 
@@ -21,13 +21,22 @@
   import RoomListItem from './RoomListItem'
 
   export default {
-    name: "RoomList",
+    name: 'RoomList',
+    props:{
+      roomList:{
+        type: Array,
+        required: true,
+        default: function () {
+          return { id: '123' }
+        }
+      }
+    },
     components: {
       RoomListItem
     },
-    data:()=>{
-      return{
-        inputData:null,
+    data: () => {
+      return {
+        inputData: null,
       }
     }
   }

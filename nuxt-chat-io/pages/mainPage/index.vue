@@ -1,7 +1,7 @@
 <template>
   <el-row type="flex" justify="center">
     <el-col :xs="24" :sm="18" :md="12" :lg="10">
-      <room-list></room-list>
+      <room-list :room-list="getRoomList"></room-list>
     </el-col>
   </el-row>
 </template>
@@ -9,9 +9,19 @@
 <script>
 
   import RoomList from '../../components/main/mainPage/RoomList.vue'
+  import {mapGetters} from 'vuex'
 
   export default {
-    components: {RoomList}
+    components: {RoomList},
+    data: () => {
+      return {}
+    },
+    computed: {
+      ...mapGetters(['getRooms']),
+      getRoomList() {
+        return [].concat(this.getRooms)
+      }
+    }
   }
 </script>
 
@@ -47,7 +57,7 @@
     padding-top: 15px;
   }
 
-  .el-row{
+  .el-row {
     height: 100%;
   }
 </style>
