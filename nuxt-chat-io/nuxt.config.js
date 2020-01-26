@@ -8,8 +8,8 @@ module.exports = {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { roomTitle: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', roomTitle: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -53,11 +53,17 @@ module.exports = {
   /*
   ** Build configuration
   */
+
   build: {
     transpile: [/^element-ui/],
     /*
     ** You can extend webpack config here
     */
+    resolve: {
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js'
+      }
+    },
     extend (config, ctx) {
     }
   }

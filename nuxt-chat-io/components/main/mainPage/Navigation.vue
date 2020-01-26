@@ -5,10 +5,12 @@
         CHAT.IO
       </a>
       <el-menu class="el-menu-demo" mode="horizontal" @select="">
-        <el-menu-item index="1">Create room</el-menu-item>
+        <el-menu-item index="1">
+          <a href="#"  @click="goToCreateRoom">Create room</a>
+        </el-menu-item>
         <el-menu-item index="2">My rooms</el-menu-item>
         <el-menu-item index="3">
-          <a href="http://localhost:3000/" target="_blank">Exit</a>
+          <a href="http://localhost:3000/">Exit</a>
         </el-menu-item>
       </el-menu>
     </nav>
@@ -23,6 +25,9 @@
     methods: {
       goToMainPage() {
         this.$router.push('/mainPage')
+      },
+      goToCreateRoom() {
+        this.$router.push('/createRoom')
       }
     }
   }
