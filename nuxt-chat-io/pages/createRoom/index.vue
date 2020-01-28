@@ -163,7 +163,7 @@
   }
 
   .el-form {
-    height: auto;
+    height: 100%;
   }
 
   .password-input-block {

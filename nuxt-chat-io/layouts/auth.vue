@@ -2,7 +2,6 @@
   <el-container>
     <el-header>
       <span>Chat.IO</span>
-      <a href="#" @click="goToRegistration">Registration</a>
     </el-header>
     <el-main>
       <nuxt/>
