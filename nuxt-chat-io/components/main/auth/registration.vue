@@ -1,36 +1,88 @@
 <template>
-  <el-card class="box-card">
-    <div slot="header" class="clearfix">
-      <span>Registration</span>
-    </div>
-    <div class="card-body">
-      <label>Login</label>
+
+  <el-form ref="form" :model="form" :rules="rules" @submit="registrationNewUser">
+
+    <el-form-item label="Login:" prop="login">
       <el-input
-        class="item"
-        placeholder="Please input"
-        v-model="loginInput"
-        clearable>
-      </el-input>
-      <label>Password</label>
-      <el-input class="item" placeholder="Please input password" v-model="passwordInput" show-password></el-input>
-      <label>Repeat password</label>
-      <el-input class="item" placeholder="Please input password" v-model="repeatPasswordInput" show-password></el-input>
-      <div>
-        <el-button type="success">Create!</el-button>
-        <el-button type="danger">Back</el-button>
-      </div>
-    </div>
-  </el-card>
+        v-model="form.login"
+      ></el-input>
+    </el-form-item>
+
+    <el-form-item label="Password:" class="password-input-block" prop="password">
+      <el-input
+        placeholder="Input.."
+        v-model="form.password"
+        show-password
+      ></el-input>
+
+    </el-form-item>
+
+    <el-form-item label="Confirm password.." prop="confirmPassword">
+      <el-input
+        placeholder="Input.."
+        v-model="form.confirmPassword"
+        show-password
+      ></el-input>
+    </el-form-item>
+
+    <el-form-item>
+      <el-button type="success" native-type="submit" :loading="loading">Registration!</el-button>
+    </el-form-item>
+  </el-form>
 </template>
 
 <script>
   export default {
     name: "registration",
-    data: () => {
+    data() {
+      var validatePassword = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('Please input the password'));
+        } else {
+
+          if (this.form.password !== '') {
+            this.$refs.form.validateField('confirmPassword');
+          }
+          callback();
+        }
+      };
+      var validateConfirmPassword = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('Please input the password again'));
+        } else if (value !== this.form.password) {
+          callback(new Error('Two inputs don\'t match!'));
+        } else {
+          callback();
+        }
+      };
       return {
-        loginInput: null,
-        passwordInput: null,
-        repeatPasswordInput: null,
+        form: {
+          login: '',
+          password: '',
+          confirmPassword: '',
+        },
+        rules: {
+          login: [
+            {
+              required: true,
+              trigger: 'blur'
+            }
+          ],
+          password: [{
+            validator: validatePassword,
+            trigger: 'blur'
+          }],
+          confirmPassword: [{
+            validator: validateConfirmPassword,
+            trigger: 'blur'
+          }],
+        },
+        loading: false,
+      }
+    },
+    methods: {
+      registrationNewUser() {
+        this.$router.push('/')
       }
     }
   }

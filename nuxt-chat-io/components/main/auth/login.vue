@@ -1,23 +1,24 @@
 <template>
-  <el-card class="box-card">
-    <div slot="header" class="clearfix">
-      <span>Auth</span>
-    </div>
-    <div class="card-body">
-      <label>login</label>
+
+  <el-form ref="form" :model="form" @submit.native.prevent="signUp">
+
+    <el-form-item label="Login:" prop="login">
       <el-input
-        class="item"
-        placeholder="Please input"
-        v-model="input"
-        clearable>
-      </el-input>
-      <label>password</label>
-      <el-input class="item" placeholder="Please input password" v-model="input" show-password></el-input>
-      <div>
-        <el-button @click="signUp">Sign up</el-button>
-      </div>
-    </div>
-  </el-card>
+        v-model="form.loginInput"
+      ></el-input>
+    </el-form-item>
+
+    <el-form-item label="Password:" class="password-input-block" prop="password">
+      <el-input
+        placeholder="Input password.."
+        v-model="form.passwordInput"
+        show-password
+      ></el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="success" native-type="submit" :loading="loading">Sign up!</el-button>
+    </el-form-item>
+  </el-form>
 </template>
 
 <script>
@@ -25,13 +26,15 @@
     name: "login",
     data: () => {
       return {
-        loginInput: null,
-        passwordInput: null
+        form: {
+          login: null,
+          password: null
+        },
+        loading: false,
       }
     },
-    methods:{
-      signUp()
-      {
+    methods: {
+      signUp() {
         this.$router.push("/mainPage")
       }
     }
@@ -40,7 +43,7 @@
 </script>
 
 <style scoped>
-  .card-body >*{
-    margin-bottom: 15px;
-  }
+  /*.card-body > * {*/
+  /*  !*margin-bottom: 15px;*!*/
+  /*}*/
 </style>
