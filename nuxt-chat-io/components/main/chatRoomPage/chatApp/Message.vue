@@ -58,7 +58,6 @@
     color: #444;
     font-size: 12px;
     line-height: 44px;
-
     font-weight: bold;
   }
 

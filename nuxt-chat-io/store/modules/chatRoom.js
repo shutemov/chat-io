@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {SEND_NEW_MESSAGE} from "../mutations";
 
 Vue.use(Vuex)
 
@@ -46,7 +47,7 @@ const state = () => ({
 })
 
 const mutations = {
-  pushMessage(state, message) {
+  [SEND_NEW_MESSAGE](state, message){
     state.roomMessages.push(
       {
         author: 'author from mutation',
