@@ -9,22 +9,22 @@ const state = () => ({
     {
       author: 'author 1',
       body: 'message text 1',
-      date: new Date()
+      date: new Date().toLocaleTimeString()
     },
     {
       author: 'author 2',
       body: 'message text 2',
-      date: new Date()
+      date: new Date().toLocaleTimeString()
     },
     {
       author: 'author 3',
       body: 'message text 3',
-      date: new Date()
+      date: new Date().toLocaleTimeString()
     },
     {
       author: 'author 4',
       body: 'message text 4',
-      date: new Date()
+      date: new Date().toLocaleTimeString()
     }
   ],
   roomUsers: [
@@ -51,7 +51,7 @@ const mutations = {
       {
         author: 'author from mutation',
         body: message,
-        date: new Date()
+        date: new Date().toLocaleTimeString()
       }
     )
   }

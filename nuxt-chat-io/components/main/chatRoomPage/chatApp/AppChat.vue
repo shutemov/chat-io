@@ -1,6 +1,6 @@
 <template>
   <div>
-    <message-viewer :message="message"></message-viewer>
+    <message-viewer :message="message" style="width: 600px;"></message-viewer>
     <input-message></input-message>
   </div>
 </template>

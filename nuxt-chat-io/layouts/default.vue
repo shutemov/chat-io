@@ -27,7 +27,6 @@
 
   .el-main{
     background-image: url("https://www.itl.cat/pngfile/big/73-736986_available-desktop-resolutions-material-design-pattern-background.jpg");
-    height: 565px;
   }
 
   .el-container{

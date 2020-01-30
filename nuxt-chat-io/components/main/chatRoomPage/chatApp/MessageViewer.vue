@@ -2,7 +2,6 @@
   <div class="viewer" @change="updateMessage">
     <ul>
       <li is="message-block" v-for="o in updateMessage" :key="o" :message="o">
-
       </li>
     </ul>
   </div>
@@ -14,18 +13,18 @@
 
   export default {
     name: "MassageViewer",
-    data(){
-      return{
-        messages:[]
+    data() {
+      return {
+        messages: []
       }
     },
     components: {
       MessageBlock
     },
-    computed:{
+    computed: {
       ...mapGetters(["getRoomMessages"]),
 
-      updateMessage(){
+      updateMessage() {
         return [].concat(this.getRoomMessages)
       }
     }
@@ -33,10 +32,13 @@
 </script>
 
 <style scoped>
+  -webkit-scrollbar {
+    width: 0;
+  }
+
   .viewer {
-    height: 70vh;
+    height: 75vh;
     width: 100%;
-    /*border: 1px dashed darkgreen;*/
     overflow: auto;
   }
 
