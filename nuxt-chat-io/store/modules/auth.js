@@ -17,6 +17,7 @@ const mutations = {
 }
 
 const actions = {
+
   async [LOGIN]({commit, dispatch}, formData) {
     const token = await new Promise(resolve => {
       setTimeout(() => {
@@ -32,8 +33,13 @@ const actions = {
   }
 }
 
+const getters = {
+  isAuth: state => Boolean(state.api_token)
+}
+
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters
 }
