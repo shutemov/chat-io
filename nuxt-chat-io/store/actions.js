@@ -1,3 +1,8 @@
+//auth
+export const LOGIN = 'LOGIN'
+export const SET_TOKEN = 'SET_TOKEN'
+
+
 //mainPage
 export const GET_ROOM_LIST = 'GET_ROOM_LIST'
 

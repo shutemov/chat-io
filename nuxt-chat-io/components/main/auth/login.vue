@@ -22,6 +22,9 @@
 </template>
 
 <script>
+  import {LOGIN} from "../../../store/actions";
+  import {mapActions} from 'vuex'
+
   export default {
     name: "login",
     data: () => {
@@ -34,8 +37,19 @@
       }
     },
     methods: {
-      signUp() {
-        this.$router.push("/mainPage")
+      ...mapActions([LOGIN]),
+
+      async signUp() {
+
+        const formData = {
+          login: this.form.login,
+          password: this.form.password
+        }
+
+        this.loading = true
+        await this[LOGIN](formData)
+        this.loading = false
+        // this.$router.push("/mainPage")
       }
     }
 

@@ -1,5 +1,6 @@
 //auth
 export const SET_UPDATING = 'SET_UPDATING'
+export const SET_TOKEN = 'SET_TOKEN'
 
 //mainPage
 export const PUSH_MESSAGE_TO_MESSAGE_LIST = "PUSH_MESSAGE_TO_MESSAGE_LIST"

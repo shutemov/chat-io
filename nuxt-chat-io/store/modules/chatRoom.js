@@ -66,10 +66,10 @@ const getters = {
     return state.roomUsers
   },
   getRoomName: state => {
-    return state.roomUsers
+    return state.roomName
   },
   getRoomAdmin: state => {
-    return state.roomUsers
+    return state.roomAdmin
   }
 }
 

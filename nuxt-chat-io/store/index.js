@@ -5,13 +5,15 @@ Vue.use(Vuex)
 
 import chatRoom from './modules/chatRoom'
 import mainPage from './modules/mainPage'
+import auth from './modules/auth'
 
 const debug = process.env.NODE_ENV !== 'production'
 
 const store = () => new Vuex.Store({
   modules: {
     chatRoom,
-    mainPage
+    mainPage,
+    auth
   },
   strict: debug,
 })
