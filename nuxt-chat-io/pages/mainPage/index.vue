@@ -12,10 +12,14 @@
   import {mapGetters} from 'vuex'
 
   export default {
+    middleware:['auth'],
     components: {RoomList},
+
     data: () => {
       return {}
     },
+
+
     computed: {
       ...mapGetters(['getRooms']),
       getRoomList() {
