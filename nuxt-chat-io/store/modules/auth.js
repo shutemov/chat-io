@@ -1,10 +1,10 @@
 import {SET_TOKEN, SET_UPDATING} from "../mutations";
 import {LOGIN} from "../actions";
 
-const state = {
-  api_token: null,
+const state = () => ({
+  api_token: undefined,
   updating: false
-}
+})
 
 const mutations = {
   [SET_UPDATING](state, updating) {
@@ -12,6 +12,9 @@ const mutations = {
   },
 
   [SET_TOKEN](state, token) {
+    console.log('mutation set_token', token)
+    console.log('mutation set_token', state)
+
     state.api_token = token
   }
 }
@@ -20,12 +23,12 @@ const actions = {
 
   async [LOGIN]({commit, dispatch}, formData) {
     const token = await new Promise(resolve => {
-      setTimeout(() => {
+      let b = setTimeout(() => {
         resolve('mock-data-token')
       }, 2000)
     })
 
-    dispatch('SET_TOKEN',token)
+    dispatch('SET_TOKEN', token)
   },
 
   [SET_TOKEN]({commit}, token) {
@@ -34,7 +37,9 @@ const actions = {
 }
 
 const getters = {
-  isAuth: state => Boolean(state.api_token)
+  isAuth: state => {
+    return state.api_token
+  }
 }
 
 export default {

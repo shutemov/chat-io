@@ -11,7 +11,7 @@
 
   export default {
     name: "index",
-    layout: "auth",
+    layout:'auth',
     components: {AuthApp}
   }
 </script>

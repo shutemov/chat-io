@@ -5,7 +5,7 @@ import {SEND_NEW_MESSAGE} from "../mutations";
 Vue.use(Vuex)
 
 
-const state = () => ({
+const state = ()=> ({
   roomMessages: [
     {
       author: 'author 1',
