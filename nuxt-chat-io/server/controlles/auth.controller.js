@@ -4,7 +4,7 @@ const keys = require('./../keys')
 const User = require('../models/user.model')
 
 module.exports.login = async (req, res) => {
-  
+
   const candidate = await User.findOne({login: req.body.login})
 
   if (candidate) {
@@ -28,6 +28,20 @@ module.exports.login = async (req, res) => {
   }
 }
 
-module.exports.createUser = (req, res) => {
+module.exports.createUser = async (req, res) => {
+  const candidate = await User.findOne({login: req.body.login})
 
+  if (candidate) {
+    res.status(409).json({message: 'this login exist'})
+  } else {
+    const salt = bcrypt.genSaltSync(10)
+
+    const user = new User({
+      login: req.body.login,
+      password: bcrypt.hashSync(req.body.password, salt)
+    })
+
+    await user.save()
+    res.status(201).json(user)
+  }
 }
