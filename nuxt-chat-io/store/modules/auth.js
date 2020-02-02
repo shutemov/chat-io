@@ -1,5 +1,5 @@
 import {SET_TOKEN, SET_UPDATING} from "../mutations";
-import {LOGIN} from "../actions";
+import {LOGIN, REGISTRATION} from "../actions";
 
 const state = () => ({
   api_token: undefined,
@@ -12,9 +12,6 @@ const mutations = {
   },
 
   [SET_TOKEN](state, token) {
-    console.log('mutation set_token', token)
-    console.log('mutation set_token', state)
-
     state.api_token = token
   }
 }
@@ -24,13 +21,20 @@ const actions = {
   async [LOGIN]({commit, dispatch}, formData) {
 
     try {
-      console.log("formData", formData)
       const {JWToken} = await this.$axios.$post('/auth/login', formData)
       dispatch('SET_TOKEN', JWToken)
     } catch (e) {
       console.log('e', e)
     }
+  },
 
+  async [REGISTRATION]({commit, dispatch}, formData) {
+
+    try {
+      const user = await this.$axios.$post('/auth/create', formData)
+    } catch (e) {
+      console.log('e', e)
+    }
   },
 
   [SET_TOKEN]({commit}, token) {
