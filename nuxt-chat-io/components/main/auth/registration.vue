@@ -26,12 +26,15 @@
     </el-form-item>
 
     <el-form-item>
-      <el-button type="success" native-type="submit" :loading="loading">Registration!</el-button>
+      <el-button type="success" @click="registrationNewUser" :loading="loading">Registration!</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script>
+  import {REGISTRATION} from '../../../store/actions';
+  import {mapActions} from 'vuex'
+
   export default {
     name: "registration",
     data() {
@@ -81,8 +84,19 @@
       }
     },
     methods: {
-      registrationNewUser() {
-        this.$router.push('/')
+      ...mapActions([REGISTRATION]),
+
+      async registrationNewUser() {
+
+        const formData = {
+          login: this.form.login,
+          password: this.form.password
+        }
+
+        this.loading = true
+        await this[REGISTRATION](formData)
+        this.loading = false
+
       }
     }
   }
