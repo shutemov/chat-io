@@ -10,7 +10,7 @@
   import AuthApp from '../components/main/auth/AuthApp.vue'
 
   export default {
-    name: "index",
+    name: "auth",
     layout:'auth',
     components: {AuthApp}
   }
