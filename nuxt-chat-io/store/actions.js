@@ -1,5 +1,6 @@
 //auth
 export const LOGIN = 'LOGIN'
+export const REGISTRATION = 'REGISTRATION'
 export const SET_TOKEN = 'SET_TOKEN'
 
 
