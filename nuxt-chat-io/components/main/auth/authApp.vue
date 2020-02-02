@@ -18,21 +18,21 @@
   import RegistrationApp from './Registration'
 
   export default {
-    name: "authApp",
+    name: 'authApp',
     components: {
       LoginApp,
       RegistrationApp
     },
-    data(){
-      return{
-        authState:'registration',
-        isRegistrationState:false,
+    data() {
+      return {
+        authState: 'Sign up',
+        isRegistrationState: false,
       }
     },
-    methods:{
-      registrationActive(){
-        if(this.isRegistrationState){
-          this.authState = 'registration'
+    methods: {
+      registrationActive() {
+        if (this.isRegistrationState) {
+          this.authState = 'Sign up'
           this.isRegistrationState = false
           return
         }

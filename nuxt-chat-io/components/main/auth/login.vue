@@ -4,19 +4,19 @@
 
     <el-form-item label="Login:" prop="login">
       <el-input
-        v-model="form.loginInput"
+        v-model="form.login"
       ></el-input>
     </el-form-item>
 
     <el-form-item label="Password:" class="password-input-block" prop="password">
       <el-input
         placeholder="Input password.."
-        v-model="form.passwordInput"
+        v-model="form.password"
         show-password
       ></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="success" native-type="submit" :loading="loading">Sign up!</el-button>
+      <el-button type="success" native-type="submit" :loading="loading">log in!</el-button>
     </el-form-item>
   </el-form>
 </template>
