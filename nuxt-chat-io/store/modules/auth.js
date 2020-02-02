@@ -22,13 +22,15 @@ const mutations = {
 const actions = {
 
   async [LOGIN]({commit, dispatch}, formData) {
-    const token = await new Promise(resolve => {
-      let b = setTimeout(() => {
-        resolve('mock-data-token')
-      }, 2000)
-    })
 
-    dispatch('SET_TOKEN', token)
+    try {
+      console.log("formData", formData)
+      const {JWToken} = await this.$axios.$post('/auth/login', formData)
+      dispatch('SET_TOKEN', JWToken)
+    } catch (e) {
+      console.log('e', e)
+    }
+
   },
 
   [SET_TOKEN]({commit}, token) {
