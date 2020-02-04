@@ -11,7 +11,7 @@
       </div>
     </div>
     <ul>
-      <li is="room-list-item" v-for="o in roomList" :key="o" :room="o"></li>
+      <li is="room-list-item" v-for="o in roomList" :key="'key:'+o" :room="o"></li>
     </ul>
   </el-card>
 
@@ -22,12 +22,12 @@
 
   export default {
     name: 'RoomList',
-    props:{
-      roomList:{
+    props: {
+      roomList: {
         type: Array,
         required: true,
         default: function () {
-          return { id: '123' }
+          return {id: '123'}
         }
       }
     },

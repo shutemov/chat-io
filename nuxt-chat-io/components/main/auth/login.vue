@@ -49,7 +49,6 @@
         this.loading = true
         await this[LOGIN](formData)
         this.loading = false
-        this.$router.push("/mainPage")
       }
     }
 

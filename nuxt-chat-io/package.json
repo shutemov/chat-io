@@ -1,7 +1,7 @@
 {
   "name": "nuxt-chat-io",
   "version": "1.0.0",
-  "description": "Переписанный на nuxt.js chat.io https://github.com/shutemov/chat.io",
+  "description": "Переписанный на nuxt.js chat.io https://github.com/shutemov/chat.io   ",
   "author": "shutemov",
   "private": true,
   "scripts": {

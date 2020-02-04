@@ -1,16 +1,17 @@
 <template>
   <div>
     <nav>
-      <a  href="#" @click="goToMainPage">
+      <nuxt-link to="/mainPage">
         CHAT.IO
-      </a>
+      </nuxt-link>
+
       <el-menu class="el-menu-demo" mode="horizontal" @select="">
         <el-menu-item index="1">
-          <a href="#"  @click="goToCreateRoom">Create room</a>
+          <nuxt-link to="/createRoom">Create room</nuxt-link>
         </el-menu-item>
         <el-menu-item index="2">My rooms</el-menu-item>
         <el-menu-item index="3">
-          <a href="http://localhost:3000/">Exit</a>
+          <nuxt-link to="/">Log out</nuxt-link>
         </el-menu-item>
       </el-menu>
     </nav>

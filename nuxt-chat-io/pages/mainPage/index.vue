@@ -12,7 +12,7 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    middleware:['auth'],
+    // middleware:['auth'],
     components: {RoomList},
 
     data: () => {
