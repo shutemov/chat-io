@@ -4,10 +4,12 @@ export const REGISTRATION = 'REGISTRATION'
 export const SET_TOKEN = 'SET_TOKEN'
 
 
-//mainPage
+//app
 export const GET_ROOM_LIST = 'GET_ROOM_LIST'
+export const CREATE_ROOM = 'CREATE_ROOM'
 
-//chatRoom
+
+//room
 export const GET_ROOM_USER_LIST = 'GET_ROOM_USER_LIST'
 export const GET_ROOM_MESSAGE_LIST = 'GET_ROOM_MESSAGE_LIST'
 export const GET_ROOM_DAILY_MESSAGE_LIST = 'GET_ROOM_DAILY_MESSAGE_LIST'
