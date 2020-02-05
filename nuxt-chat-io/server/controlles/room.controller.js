@@ -48,7 +48,7 @@ module.exports.createRoom = async (req, res) => {
         password: bcrypt.hashSync(req.body.password, salt),
         //extract header bearer login and will put in roomUser
         roomUsers: [],
-        roomMessages:[]
+        roomMessages: []
       })
 
     } else {
@@ -57,7 +57,7 @@ module.exports.createRoom = async (req, res) => {
         description: req.body.description,
         //extract header bearer login and will put in roomUser
         roomUsers: [],
-        roomMessages:[]
+        roomMessages: []
       })
     }
 
@@ -65,4 +65,17 @@ module.exports.createRoom = async (req, res) => {
 
     res.status(201).json(room)
   }
+}
+
+
+module.exports.getRoomList = async (req, res) => {
+
+  const rooms = await Room.find()
+
+  if (rooms) {
+    res.status(201).json(rooms)
+  } else {
+    res.status(401).json({message: 'rooms not found'})
+  }
+
 }
