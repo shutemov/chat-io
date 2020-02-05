@@ -16,12 +16,12 @@ const roomSchema = new Schema({
   },
   roomUsers: {
     //array of user login
-    type: Array[String],
-    default: undefined
+    type: Array,
+    default: []
   },
   roomMessages: {
-    type: Array[String],
-    default: undefined
+    type: Array,
+    default: []
   }
 })
 
