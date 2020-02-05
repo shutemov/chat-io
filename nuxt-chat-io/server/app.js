@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const authRoutes = require('./routes/auth.routes')
+const mainPageRoutes = require('./routes/room.routes')
 const keys = require('./keys')
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 app.use('/auth', authRoutes)
+app.use('/mainPage', mainPageRoutes)
 
 
 module.exports = app
