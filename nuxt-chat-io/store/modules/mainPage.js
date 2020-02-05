@@ -11,16 +11,19 @@ const state = () => ({
     description: ' small description 1',
     userNum: 1,
     isPassword: true,
+    accessToken:undefined,
   }, {
     id: 1,
     title: '2 room',
     description: ' small description 2',
-    userNum: 2
+    userNum: 2,
+    isPassword: false,
   }, {
     id: 2,
     title: '3 room',
     description: ' small description 3',
-    userNum: 3
+    userNum: 3,
+    isPassword: true,
   }],
 })
 
