@@ -12,19 +12,27 @@
   import {mapGetters} from 'vuex'
 
   export default {
+
     // middleware:['auth'],
+
     components: {RoomList},
+
+    fetch: async ({store}) => {
+      await store.dispatch('GET_ROOM_LIST')
+    },
 
     data: () => {
       return {}
     },
 
-
     computed: {
+
       ...mapGetters(['getRooms']),
+
       getRoomList() {
         return [].concat(this.getRooms)
       }
+
     }
   }
 </script>
