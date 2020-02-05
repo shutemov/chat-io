@@ -1,11 +1,14 @@
 const {Router} = require('express')
-const controllers = require('./../controlles/room.controllers')
+const controllers = require('./../controlles/room.controller')
 const router = Router()
 
-//router path:
+//router path: /mainPage
 router.post('/enter', controllers.enterToRoom)
 
-//router path:
+//TODO: router path: 
 router.post('/create', controllers.createRoom)
+
+
+router.get('/getRooms', controllers.getRoomList)
 
 module.exports = router
