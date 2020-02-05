@@ -27,7 +27,7 @@
         type: Array,
         required: true,
         default: function () {
-          return {id: '123'}
+          return undefined
         }
       }
     },

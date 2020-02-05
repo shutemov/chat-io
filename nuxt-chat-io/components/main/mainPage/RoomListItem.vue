@@ -35,7 +35,7 @@
     },
     methods: {
       enterToChat() {
-        this.$router.push(`/chatRoom/${this.room.id}`)
+        this.$router.push(`app/room/${this.room._id}`)
       }
     }
   }
