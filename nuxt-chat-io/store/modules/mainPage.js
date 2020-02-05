@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+import {GET_ROOM_LIST} from "../actions";
+import {SET_ROOMS_TO_ROOM_LIST} from "../mutations";
 
 const state = () => ({
   roomList: [{
@@ -11,7 +13,6 @@ const state = () => ({
     description: ' small description 1',
     userNum: 1,
     isPassword: true,
-    accessToken:undefined,
   }, {
     id: 1,
     title: '2 room',
@@ -28,7 +29,21 @@ const state = () => ({
 })
 
 const mutations = {
-  pushMessage(state, payload) {
+  [SET_ROOMS_TO_ROOM_LIST](state, payload) {
+    console.log('[SET_ROOMS_TO_ROOM_LIST]', payload)
+    state.roomList = [].concat(payload)
+  }
+}
+
+const actions = {
+  async [GET_ROOM_LIST]({commit}) {
+    try {
+      console.log('[GET_ROOM_LIST]')
+      const roomList = await this.$axios.$get('/mainPage/getRooms')
+      commit('SET_ROOMS_TO_ROOM_LIST', roomList)
+    } catch (e) {
+      console.log('e', e)
+    }
   }
 }
 
@@ -38,4 +53,4 @@ const getters = {
   }
 }
 
-export default {state, mutations, getters}
+export default {state, mutations, actions, getters}
