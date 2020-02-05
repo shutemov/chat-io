@@ -5,27 +5,6 @@ const Room = require('../models/room.model')
 
 module.exports.enterToRoom = async (req, res) => {
 
-  const candidate = await User.findOne({login: req.body.login})
-
-  if (candidate) {
-
-    const isPassCorrect = bcrypt.compareSync(req.body.password, candidate.password)
-
-    if (isPassCorrect) {
-      const JWToken = jwt.sign(
-        {
-          login: candidate.login,
-          userId: candidate._id
-        },
-        keys.JWT,
-        {expiresIn: 60 * 60})
-      res.json({JWToken})
-    } else {
-      res.status(401).json({message: 'Pass incorrect'})
-    }
-  } else {
-    res.status(501).json({message: 'User not found'})
-  }
 }
 
 /*
@@ -34,15 +13,19 @@ module.exports.enterToRoom = async (req, res) => {
  */
 module.exports.createRoom = async (req, res) => {
   const candidate = await Room.findOne({title: req.body.title})
-
+  console.log('.createRoom',candidate)
   if (candidate) {
     res.status(409).json({message: 'this room exist'})
   } else {
-    const room = undefined
+    console.log('.createRoom 1',req.body.title)
+    console.log('.createRoom 1',req.body.password)
+    let room = undefined
+
     if (req.body.password) {
 
       const salt = bcrypt.genSaltSync(10)
-      const room = new Room({
+
+      room = new Room({
         title: req.body.title,
         description: req.body.description,
         password: bcrypt.hashSync(req.body.password, salt),
@@ -52,7 +35,7 @@ module.exports.createRoom = async (req, res) => {
       })
 
     } else {
-      const room = new Room({
+      room = new Room({
         title: req.body.title,
         description: req.body.description,
         //extract header bearer login and will put in roomUser

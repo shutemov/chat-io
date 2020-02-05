@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import {GET_ROOM_LIST} from "../actions";
+import {GET_ROOM_LIST, CREATE_ROOM} from "../actions";
 import {SET_ROOMS_TO_ROOM_LIST} from "../mutations";
 
 const state = () => ({
@@ -39,8 +39,18 @@ const actions = {
   async [GET_ROOM_LIST]({commit}) {
     try {
       console.log('[GET_ROOM_LIST]')
-      const roomList = await this.$axios.$get('/mainPage/getRooms')
+      const roomList = await this.$axios.$get('/app/rooms')
       commit('SET_ROOMS_TO_ROOM_LIST', roomList)
+    } catch (e) {
+      console.log('e', e)
+    }
+  },
+
+  async [CREATE_ROOM](store, payload) {
+    try {
+      console.log('[CREATE_ROOM]')
+      const room = await this.$axios.$post('/app/room/create', payload)
+      
     } catch (e) {
       console.log('e', e)
     }

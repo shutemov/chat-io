@@ -53,7 +53,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button type="success" native-type="submit" :loading="loading">Create</el-button>
+          <el-button type="success" :loading="loading" @click="onSubmit">Create</el-button>
           <el-button type="danger" @click="goToMainPage">Cancel</el-button>
         </el-form-item>
       </el-form>
@@ -62,11 +62,17 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
+  import {CREATE_ROOM} from "../../../store/actions";
+
 
   export default {
     name: "index",
+
     layout: "default",
+
     data() {
+
       var validatePassword = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('Please input the password'));
@@ -77,6 +83,7 @@
           callback();
         }
       };
+
       var validateConformPassword = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('Please input the password again'));
@@ -86,6 +93,7 @@
           callback();
         }
       };
+
       return {
         form: {
           roomTitle: '',
@@ -119,30 +127,53 @@
         loading: false,
       }
     },
-    methods: {
-      onSubmit() {
 
+
+    methods: {
+
+      ...mapActions([CREATE_ROOM]),
+
+      async onSubmit() {
         let title = this.form.roomTitle
         let desciption = this.form.roomDescription
         let isRoomHasPassword = this.form.roomHasPassword
         let password = this.form.roomPassword
         let repeatPassword = this.form.roomConfirmPassword
 
+
         if (isRoomHasPassword) {
           if (title !== '' && desciption !== '' && password !== '' && repeatPassword !== '' && (password == repeatPassword)) {
+
+            let formData = {
+              title: title,
+              description: desciption,
+              password: password
+            }
+
             alert('submit with password' + this.form.roomHasPassword);
+
+            await this[CREATE_ROOM](formData)
             return
           }
         } else if (title !== '' && desciption !== '') {
           {
-            alert('submit without password');
+            let formData = {
+              title: title,
+              description: desciption,
+            }
+
+            alert('submit without password' + formData.title);
+
+
+            await this[CREATE_ROOM](formData)
+
             return;
           }
         }
         alert('pls fill full fields of form')
       },
       goToMainPage() {
-        this.$router.push('/mainPage')
+        this.$router.push('/app')
       },
       clearPasswordField() {
         if (this.form.roomHasPassword) {
