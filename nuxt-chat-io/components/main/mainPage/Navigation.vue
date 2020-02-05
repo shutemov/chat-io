@@ -1,13 +1,13 @@
 <template>
   <div>
     <nav>
-      <nuxt-link to="/mainPage">
+      <nuxt-link to="/app">
         CHAT.IO
       </nuxt-link>
 
       <el-menu class="el-menu-demo" mode="horizontal" @select="">
         <el-menu-item index="1">
-          <nuxt-link to="/createRoom">Create room</nuxt-link>
+          <nuxt-link to="/app/createRoom">Create room</nuxt-link>
         </el-menu-item>
         <el-menu-item index="2">My rooms</el-menu-item>
         <el-menu-item index="3">
@@ -23,14 +23,7 @@
 
   export default {
     name: "Navigation",
-    methods: {
-      goToMainPage() {
-        this.$router.push('/mainPage')
-      },
-      goToCreateRoom() {
-        this.$router.push('/createRoom')
-      }
-    }
+    methods: {}
   }
 </script>
 
