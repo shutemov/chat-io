@@ -1,6 +1,6 @@
 <template>
 
-  <el-form ref="form" :model="form" @submit.native.prevent="signUp">
+  <el-form ref="form" :model="form" @submit.native.prevent="logIn">
 
     <el-form-item label="Login:" prop="login">
       <el-input
@@ -23,7 +23,7 @@
 
 <script>
   import {LOGIN} from "../../../store/actions";
-  import {mapActions} from 'vuex'
+  import {mapGetters, mapActions} from 'vuex'
 
   export default {
     name: "login",
@@ -38,17 +38,22 @@
     },
     methods: {
       ...mapActions([LOGIN]),
+      ...mapGetters(['getToken', 'isAuth']),
 
-      async signUp() {
+      async logIn() {
 
         const formData = {
           login: this.form.login,
-          password: this.form.password
+          password: this.form.password,
         }
 
         this.loading = true
         await this[LOGIN](formData)
         this.loading = false
+
+        if (this.isAuth()) {
+          this.$router.push('/app')
+        }
       }
     }
 
