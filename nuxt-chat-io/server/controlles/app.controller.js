@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt-nodejs')
 const jwt = require('jsonwebtoken')
 const keys = require('./../keys')
 const Room = require('../models/room.model')
+const User = require('../models/user.model')
 
 module.exports.enterToRoom = async (req, res) => {
 
@@ -12,41 +13,68 @@ module.exports.enterToRoom = async (req, res) => {
   то в зависимости от наличия пароля создаем новую комнату.
  */
 module.exports.createRoom = async (req, res) => {
-  const candidate = await Room.findOne({title: req.body.title})
-  console.log('.createRoom',candidate)
-  if (candidate) {
-    res.status(409).json({message: 'this room exist'})
-  } else {
-    console.log('.createRoom 1',req.body.title)
-    console.log('.createRoom 1',req.body.password)
-    let room = undefined
+  try {
 
-    if (req.body.password) {
 
-      const salt = bcrypt.genSaltSync(10)
+    const candidate = await Room.findOne({title: req.body.title})
 
-      room = new Room({
-        title: req.body.title,
-        description: req.body.description,
-        password: bcrypt.hashSync(req.body.password, salt),
-        //extract header bearer login and will put in roomUser
-        roomUsers: [],
-        roomMessages: []
-      })
+    console.log('.createRoom', candidate)
 
+    if (candidate) {
+      res.status(409).json({message: 'this room exist'})
     } else {
-      room = new Room({
-        title: req.body.title,
-        description: req.body.description,
-        //extract header bearer login and will put in roomUser
-        roomUsers: [],
-        roomMessages: []
-      })
+
+      let room = undefined
+
+      if (req.body.password) {
+
+        const salt = bcrypt.genSaltSync(10)
+
+
+        // verify a token symmetric
+
+        let uesrId = undefined
+
+        jwt.verify(req.body.token, keys.JWT, function (err, decoded) {
+          console.log('DECODED', decoded.userId) // bar
+          userId = decoded.userId
+        });
+
+
+        room = new Room({
+          title: req.body.title,
+          description: req.body.description,
+          password: bcrypt.hashSync(req.body.password, salt),
+          users: [],
+          messages: []
+        })
+
+        await room.save()
+
+        const user = await User.findById(userId)
+
+        user.rooms.push(room._id)
+
+        await user.save()
+
+        res.status(201).json(room)
+
+      } else {
+        room = new Room({
+          title: req.body.title,
+          description: req.body.description,
+          //extract header bearer login and will put in roomUser
+          users: [],
+          messages: []
+        })
+
+        await room.save()
+        res.status(201).json(room)
+
+      }
     }
-
-    await room.save()
-
-    res.status(201).json(room)
+  }catch (e) {
+    console.log(e)
   }
 }
 
