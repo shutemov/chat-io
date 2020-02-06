@@ -44,8 +44,10 @@ const actions = {
 
 const getters = {
   isAuth: state => {
-    return state.api_token
-  }
+    return Boolean(state.api_token)
+  },
+
+  getToken: state => {return state.api_token}
 }
 
 export default {
