@@ -62,7 +62,7 @@
 </template>
 
 <script>
-  import {mapActions} from 'vuex'
+  import {mapGetters, mapActions} from 'vuex'
   import {CREATE_ROOM} from "../../../store/actions";
 
 
@@ -132,22 +132,24 @@
     methods: {
 
       ...mapActions([CREATE_ROOM]),
+      ...mapGetters(['getToken']),
 
       async onSubmit() {
         let title = this.form.roomTitle
-        let desciption = this.form.roomDescription
+        let description = this.form.roomDescription
         let isRoomHasPassword = this.form.roomHasPassword
         let password = this.form.roomPassword
         let repeatPassword = this.form.roomConfirmPassword
 
 
         if (isRoomHasPassword) {
-          if (title !== '' && desciption !== '' && password !== '' && repeatPassword !== '' && (password == repeatPassword)) {
+          if (title !== '' && description !== '' && password !== '' && repeatPassword !== '' && (password == repeatPassword)) {
 
             let formData = {
               title: title,
-              description: desciption,
-              password: password
+              description: description,
+              password: password,
+              token: this.getToken()
             }
 
             alert('submit with password' + this.form.roomHasPassword);
@@ -155,11 +157,11 @@
             await this[CREATE_ROOM](formData)
             return
           }
-        } else if (title !== '' && desciption !== '') {
+        } else if (title !== '' && description !== '') {
           {
             let formData = {
               title: title,
-              description: desciption,
+              description: description,
             }
 
             alert('submit without password' + formData.title);
