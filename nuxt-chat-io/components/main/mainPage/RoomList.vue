@@ -11,7 +11,7 @@
       </div>
     </div>
     <ul>
-      <li is="room-list-item" v-for="o in roomList" :key="'key:'+o" :room="o"></li>
+      <li is="room-list-item" v-for="(o,index) in roomList" :key="index+o" :room="o"></li>
     </ul>
   </el-card>
 

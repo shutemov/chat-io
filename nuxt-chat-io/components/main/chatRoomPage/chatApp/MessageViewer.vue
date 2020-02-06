@@ -1,7 +1,7 @@
 <template>
   <div class="viewer" @change="updateMessage">
     <ul>
-      <li is="message-block" v-for="o in updateMessage" :key="o" :message="o">
+      <li is="message-block" v-for="(o,index) in updateMessage" :key="index +o" :message="o">
       </li>
     </ul>
   </div>
