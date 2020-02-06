@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 
 const state = ()=> ({
-  roomMessages: [
+  messages: [
     {
       author: 'author 1',
       body: 'message text 1',
@@ -28,7 +28,7 @@ const state = ()=> ({
       date: new Date().toLocaleTimeString()
     }
   ],
-  roomUsers: [
+  users: [
     {
       username: 'username 1',
       isOnline: true
@@ -48,7 +48,7 @@ const state = ()=> ({
 
 const mutations = {
   [SEND_NEW_MESSAGE](state, message){
-    state.roomMessages.push(
+    state.messages.push(
       {
         author: 'author from mutation',
         body: message,
@@ -60,10 +60,10 @@ const mutations = {
 
 const getters = {
   getRoomMessages: state => {
-    return state.roomMessages
+    return state.messages
   },
   getRoomUsers: state => {
-    return state.roomUsers
+    return state.users
   },
   getRoomName: state => {
     return state.roomName
