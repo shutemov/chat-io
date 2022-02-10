@@ -19,7 +19,7 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.11",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "nuxt": "^2.0.0",
     "sass-loader": "^8.0.2"
   },
